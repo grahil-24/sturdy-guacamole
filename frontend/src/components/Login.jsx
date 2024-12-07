@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../styles/login.css';
 
 const Login = ({ onLogin }) => {
     const [email, setEmail] = useState("");
@@ -31,24 +32,38 @@ const Login = ({ onLogin }) => {
     };
 
     return (
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} className={"loginForm"}>
             <h1>Login</h1>
-            <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                required
-            />
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-                required
-            />
+            <div className={"input"}>
+                <div className={"input-label"}>
+                    <label htmlFor="email">Email</label>
+                </div>
+                <div className={"input-box"}>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        required
+                    />
+                </div>
+            </div>
+            <div className={"input"}>
+                <div className={"input-label"}>
+                    <label htmlFor="password">Password</label>
+                </div>
+                <div className={"input-box"}>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                    />
+                </div>
+            </div>
             <button type="submit">Login</button>
-            {error && <p>{error}</p>}
+            {error && <p style={{ color: "red"}}>{error}</p>}
         </form>
     );
 };
